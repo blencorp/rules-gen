@@ -12,16 +12,16 @@ An interactive CLI tool that generates cursor and windsurf rules based on user s
 
 ## Installation
 
+### Using npx (without installation) - recommended - the rulelist gets updated daily
+
+```bash
+npx rules-gen
+```
+
 ### Global Installation
 
 ```bash
 npm install -g rules-gen
-```
-
-### Using npx (without installation)
-
-```bash
-npx rules-gen
 ```
 
 ## Usage
