@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/7f9d3102-3ab7-4d3f-b4f9-2b019830bd1f)
+
+
 # Rules Generator CLI
 
 An interactive CLI tool that generates cursor and windsurf rules based on user selections. 
