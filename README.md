@@ -31,7 +31,7 @@ npx rules-gen
 Simply run the CLI without arguments to use the interactive mode:
 
 ```bash
-rules
+rules-gen
 ```
 
 or
