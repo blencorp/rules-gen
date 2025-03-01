@@ -15,13 +15,13 @@ An interactive CLI tool that generates cursor and windsurf rules based on user s
 ### Global Installation
 
 ```bash
-npm install -g rules-generator-cli
+npm install -g rules-gen
 ```
 
 ### Using npx (without installation)
 
 ```bash
-npx rules-generator-cli
+npx rules-gen
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ rules
 or
 
 ```bash
-npx rules-generator-cli
+npx rules-gen
 ```
 
 ### Non-Interactive Mode
@@ -72,8 +72,8 @@ The CLI generates JavaScript files with the selected rules. For example, selecti
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/rules-generator-cli.git
-   cd rules-generator-cli
+   git clone https://github.com/username/rules-gen.git
+   cd rules-gen
    ```
 
 2. Install dependencies:
