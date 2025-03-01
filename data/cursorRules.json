@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Angular (Novo Elements)",
+    "url": "./rules/angular-novo-elements-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Angular (TypeScript)",
+    "url": "./rules/angular-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Astro (TypeScript)",
+    "url": "./rules/astro-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Cursor AI (React, TypeScript, shadcn/ui)",
+    "url": "./rules/cursor-ai-react-typescript-shadcn-ui-cursorrules-p/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js 15 (React 19, Vercel AI, Tailwind)",
+    "url": "./rules/nextjs15-react19-vercelai-tailwind-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js 14 (Tailwind, SEO)",
+    "url": "./rules/cursorrules-cursor-ai-nextjs-14-tailwind-seo-setup/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (React, Tailwind)",
+    "url": "./rules/nextjs-react-tailwind-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (React, TypeScript)",
+    "url": "./rules/nextjs-react-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (SEO Development)",
+    "url": "./rules/nextjs-seo-dev-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (Supabase Todo App)",
+    "url": "./rules/nextjs-supabase-todo-app-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (Tailwind, TypeScript)",
+    "url": "./rules/nextjs-tailwind-typescript-apps-cursorrules-prompt/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (TypeScript App)",
+    "url": "./rules/nextjs-typescript-app-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (TypeScript)",
+    "url": "./rules/nextjs-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (TypeScript, Tailwind)",
+    "url": "./rules/nextjs-typescript-tailwind-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (Vercel, Supabase)",
+    "url": "./rules/nextjs-vercel-supabase-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (Vercel, TypeScript)",
+    "url": "./rules/nextjs-vercel-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (App Router)",
+    "url": "./rules/nextjs-app-router-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Next.js (Material UI, Tailwind CSS)",
+    "url": "./rules/nextjs-material-ui-tailwind-css-cursorrules-prompt/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Qwik (Basic Setup with TypeScript and Vite)",
+    "url": "./rules/qwik-basic-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Qwik (with Tailwind CSS)",
+    "url": "./rules/qwik-tailwind-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "React Components Creation",
+    "url": "./rules/react-components-creation-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "React (Next.js UI Development)",
+    "url": "./rules/react-nextjs-ui-development-cursorrules-prompt-fil/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "React (TypeScript, Next.js, Node.js)",
+    "url": "./rules/react-typescript-nextjs-nodejs-cursorrules-prompt-/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "React (TypeScript, Symfony)",
+    "url": "./rules/react-typescript-symfony-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Solid.js (Basic Setup)",
+    "url": "./rules/solidjs-basic-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Solid.js (TypeScript)",
+    "url": "./rules/solidjs-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Solid.js (Tailwind CSS)",
+    "url": "./rules/solidjs-tailwind-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Svelte 5 vs Svelte 4",
+    "url": "./rules/svelte-5-vs-svelte-4-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "SvelteKit (RESTful API, Tailwind CSS)",
+    "url": "./rules/sveltekit-restful-api-tailwind-css-cursorrules-pro/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "SvelteKit (Tailwind CSS, TypeScript)",
+    "url": "./rules/sveltekit-tailwindcss-typescript-cursorrules-promp/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "SvelteKit (TypeScript Guide)",
+    "url": "./rules/sveltekit-typescript-guide-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Vue 3 (Nuxt 3 Development)",
+    "url": "./rules/vue-3-nuxt-3-development-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Vue 3 (Nuxt 3, TypeScript)",
+    "url": "./rules/vue-3-nuxt-3-typescript-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  },
+  {
+    "name": "Vue 3 (Composition API)",
+    "url": "./rules/vue3-composition-api-cursorrules-prompt-file/.cursorrules",
+    "description": ""
+  }
+]
