@@ -1,0 +1,34 @@
+# Development files
+.git
+.gitignore
+.replit
+.editorconfig
+.eslintrc*
+.prettier*
+.vscode/
+.idea/
+
+# Test files and directories
+test/
+tests/
+__tests__/
+coverage/
+.nyc_output/
+
+# CI/CD and build files
+.github/
+.travis.yml
+.gitlab-ci.yml
+appveyor.yml
+azure-pipelines.yml
+
+# Misc
+*.log
+*.tar.gz
+*.tgz
+.DS_Store
+.env
+.env.*
+node_modules/
+npm-debug.log
+coverage/

@@ -1,0 +1,51 @@
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "CLI Rules Generator"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "rules-cli-non-interactive"
+
+[[workflows.workflow]]
+name = "CLI Rules Generator"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node bin/index.js"
+
+[[workflows.workflow]]
+name = "rules-cli-non-interactive"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node bin/index.js --type cursor --rules basic,hover --interactive false"
+
+[deployment]
+run = ["sh", "-c", "node bin/index.js"]
