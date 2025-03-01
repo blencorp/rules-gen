@@ -58,24 +58,6 @@ rules --type all --interactive false
 rules --type cursor --rules basic,hover --interactive false --force
 ```
 
-## Rule Options
-
-### Cursor Rules
-
-- `basic`: Basic cursor styling and behavior
-- `hover`: Hover effects for interactive elements
-- `click`: Click animation effects
-- `custom`: Custom cursor image support
-- `interactive`: Interactive magnetic effects for buttons and links
-
-### Windsurf Rules
-
-- `basic`: Basic windsurf movement
-- `physics`: Advanced physics simulation
-- `wave`: Wave interaction behavior
-- `wind`: Wind dynamics calculations
-- `sail`: Sail controls and adjustments
-
 ## How It Works
 
 The CLI generates JavaScript files with the selected rules. For example, selecting cursor rules with 'basic' and 'hover' options will generate a `cursor-rules.js` file that can be included in your web projects.
@@ -123,3 +105,4 @@ MIT
 ## Team
 
 Mike Endale
+Naod Yeheyes
