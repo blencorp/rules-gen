@@ -52,6 +52,7 @@
     "ora": "^5.4.1"
   },
   "devDependencies": {
+    "marked": "^15.0.7",
     "mocha": "^11.1.0"
   }
 }

@@ -1,0 +1,55 @@
+name: Update Rules Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:      # Allow manual trigger
+  push:
+    paths:
+      - 'scripts/updateRules.js'  # Run when the update script changes
+
+jobs:
+  update-rules:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install marked
+
+      - name: Create data directory
+        run: mkdir -p data
+
+      - name: Update rules
+        run: node scripts/updateRules.js
+        id: update
+        continue-on-error: true
+
+      - name: Create Pull Request
+        if: steps.update.outcome == 'success'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: update rules data'
+          title: 'chore: update rules data'
+          body: |
+            This PR updates the rules data from remote sources.
+            
+            - Updates cursor rules from awesome-cursorrules
+            - Updates windsurf rules (when configured)
+            
+            This is an automated PR created by the update-rules workflow.
+          branch: update-rules-data
+          delete-branch: true
+          base: main
