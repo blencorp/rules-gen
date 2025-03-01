@@ -94,13 +94,13 @@ Special thanks to [awesome-cursorrules](https://github.com/PatrickJS/awesome-cur
 
 ### Prerequisites
 
-- Node.js 14 or higher
+- Node.js 18 or higher
 
 ### Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/rules-gen.git
+   git clone https://github.com/blencorp/rules-gen.git
    cd rules-gen
    ```
 
