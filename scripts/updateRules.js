@@ -3,6 +3,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const { marked } = require('marked');
+const yaml = require('js-yaml');
 
 // Configuration for different rule sources
 const SOURCES = {
@@ -10,29 +11,86 @@ const SOURCES = {
     url: 'https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/README.md',
     section: 'Frontend Frameworks and Libraries',
     outputFile: 'cursorRules.json'
-  },
-  windsurf: {
-    // Add windsurf rules source when available
-    url: null,
-    section: null,
-    outputFile: 'windsurfRules.json'
   }
 };
 
-async function fetchContent(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
+// Maximum retries for failed requests
+const MAX_RETRIES = 3;
+// Delay between retries in ms
+const RETRY_DELAY = 2000;
+// Delay between rule fetches to avoid rate limiting
+const RATE_LIMIT_DELAY = 1000;
+
+function convertToRawUrl(relativeUrl) {
+  const baseUrl = 'https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/refs/heads/main/';
+  return baseUrl + relativeUrl.replace(/^\.\//,'');
+}
+
+async function fetchWithRetry(url, retries = MAX_RETRIES) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        return await response.text();
+      }
+      if (response.status === 404) {
+        console.warn(`Resource not found at ${url}`);
+        return null;
+      }
       throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      console.warn(`Retry ${i + 1}/${retries} for ${url}`);
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
     }
-    return await response.text();
+  }
+  return null;
+}
+
+async function parseRuleContent(content) {
+  if (!content) return { rules: [], patterns: [], files: [] };
+
+  try {
+    // Try to parse as YAML first
+    const parsed = yaml.load(content);
+    if (parsed) {
+      return {
+        rules: Array.isArray(parsed) ? parsed : [parsed],
+        patterns: parsed.patterns || [],
+        files: parsed.files || []
+      };
+    }
+  } catch {
+    // If YAML parsing fails, treat as plain text rules
+    const rules = content
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line && !line.startsWith('#'));
+    
+    return {
+      rules,
+      patterns: [],
+      files: []
+    };
+  }
+}
+
+async function fetchRuleContent(url) {
+  await new Promise(resolve => setTimeout(resolve, RATE_LIMIT_DELAY));
+  console.log(`Fetching rule content from ${url}...`);
+  
+  try {
+    const content = await fetchWithRetry(url);
+    if (!content) return null;
+    
+    return await parseRuleContent(content);
   } catch (error) {
-    console.error(`Error fetching content from ${url}:`, error);
+    console.error(`Error processing rule from ${url}:`, error);
     return null;
   }
 }
 
-function extractSectionContent(markdown, sectionTitle) {
+async function extractSectionContent(markdown, sectionTitle) {
   const tokens = marked.lexer(markdown);
   let inSection = false;
   let items = [];
@@ -48,21 +106,35 @@ function extractSectionContent(markdown, sectionTitle) {
     }
 
     if (inSection && token.type === 'list') {
-      items = token.items.map(item => {
+      items = await Promise.all(token.items.map(async item => {
         const matches = item.text.match(/\[([^\]]+)\]\(([^)]+)\)/);
         if (matches) {
+          const name = matches[1];
+          const relativeUrl = matches[2];
+          const rawUrl = convertToRawUrl(relativeUrl);
+          
+          console.log(`Processing rule: ${name}`);
+          const ruleContent = await fetchRuleContent(rawUrl);
+          
+          if (!ruleContent) {
+            console.warn(`Warning: No valid rule content found for ${name}`);
+            return null;
+          }
+
           return {
-            name: matches[1],
-            url: matches[2],
-            description: item.text.replace(matches[0], '').trim()
+            name,
+            url: relativeUrl,
+            rawUrl,
+            description: item.text.replace(matches[0], '').trim(),
+            content: ruleContent
           };
         }
-        return { name: item.text, url: null, description: '' };
-      });
+        return null;
+      }));
     }
   }
 
-  return items;
+  return items.filter(item => item !== null);
 }
 
 async function processSource(type, source) {
@@ -72,11 +144,16 @@ async function processSource(type, source) {
   }
 
   console.log(`Fetching ${type} rules from ${source.url}...`);
-  const content = await fetchContent(source.url);
-  if (!content) return null;
+  try {
+    const content = await fetchWithRetry(source.url);
+    if (!content) return null;
 
-  const rules = extractSectionContent(content, source.section);
-  return rules;
+    const rules = await extractSectionContent(content, source.section);
+    return rules;
+  } catch (error) {
+    console.error(`Error processing ${type} rules:`, error);
+    return null;
+  }
 }
 
 async function saveRules(rules, filename) {
@@ -121,4 +198,8 @@ async function main() {
   process.exit(hasChanges ? 0 : 1);
 }
 
-main();
+main()
+  .catch(error => {
+    console.error('Fatal error:', error);
+    process.exit(1);
+  });

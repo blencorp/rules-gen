@@ -13,6 +13,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "update-rules": "node scripts/updateRules.js",
     "test": "mocha",
     "prepublishOnly": "npm test",
     "preversion": "npm test",
@@ -49,10 +50,11 @@
     "commander": "^13.1.0",
     "fs-extra": "^11.3.0",
     "inquirer": "^8.2.5",
+    "js-yaml": "4.1.0",
+    "marked": "^15.0.7",
     "ora": "^5.4.1"
   },
   "devDependencies": {
-    "marked": "^15.0.7",
     "mocha": "^11.1.0"
   }
 }
