@@ -120,6 +120,6 @@ The CLI generates JavaScript files with the selected rules. For example, selecti
 
 MIT
 
-## Author
+## Team
 
-Created with ❤️ by Replit User
+Mike Endale
