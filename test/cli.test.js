@@ -1,6 +1,7 @@
 const assert = require('assert');
 const path = require('path');
 const cli = require('../lib/cli');
+const { version } = require('../package.json');
 
 describe('CLI', () => {
   it('should have correct program name', () => {
@@ -8,7 +9,7 @@ describe('CLI', () => {
   });
 
   it('should have correct version', () => {
-    assert.strictEqual(cli.program.version(), '0.1.0');
+    assert.strictEqual(cli.program.version(), version);
   });
 
   it('should have required options', () => {

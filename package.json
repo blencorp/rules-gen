@@ -16,7 +16,7 @@
     "test": "mocha",
     "prepublishOnly": "npm test",
     "preversion": "npm test",
-    "version": "node -e 'const fs=require(\"fs\");const p=require(\"./package.json\");const v=p.version;const c=fs.readFileSync(\"./lib/cli.js\",\"utf8\");fs.writeFileSync(\"./lib/cli.js\",c.replace(/\\.version\\([^)]+\\)/,`.version(\"${v}\")`));' && git add -A",
+    "version": "git add -A",
     "postversion": "git push && git push --tags"
   },
   "publishConfig": {
