@@ -7,10 +7,61 @@ const yaml = require('js-yaml');
 
 // Configuration for different rule sources
 const SOURCES = {
-  cursor: {
+  rules: {
     url: 'https://raw.githubusercontent.com/PatrickJS/awesome-cursorrules/main/README.md',
-    section: 'Frontend Frameworks and Libraries',
-    outputFile: 'cursorRules.json'
+    groups: [
+      {
+        name: 'Frontend Frameworks and Libraries',
+        section: 'Frontend Frameworks and Libraries',
+        description: 'Rules for frontend development with various frameworks and libraries'
+      },
+      {
+        name: 'Backend and Full-Stack',
+        section: 'Backend and Full-Stack',
+        description: 'Rules for backend and full-stack development'
+      },
+      {
+        name: 'Mobile Development',
+        section: 'Mobile Development',
+        description: 'Rules for mobile app development'
+      },
+      {
+        name: 'CSS and Styling',
+        section: 'CSS and Styling',
+        description: 'Rules for CSS, styling, and design systems'
+      },
+      {
+        name: 'State Management',
+        section: 'State Management',
+        description: 'Rules for state management solutions'
+      },
+      {
+        name: 'Database and API',
+        section: 'Database and API',
+        description: 'Rules for database interactions and API development'
+      },
+      {
+        name: 'Testing',
+        section: 'Testing',
+        description: 'Rules for testing and quality assurance'
+      },
+      {
+        name: 'Build Tools and Development',
+        section: 'Build Tools and Development',
+        description: 'Rules for build tools and development workflows'
+      },
+      {
+        name: 'Language-Specific',
+        section: 'Language-Specific',
+        description: 'Language-specific rules and best practices'
+      },
+      {
+        name: 'Other',
+        section: 'Other',
+        description: 'Miscellaneous rules and utilities'
+      }
+    ],
+    outputFile: 'rules.json'
   }
 };
 
@@ -143,13 +194,24 @@ async function processSource(type, source) {
     return null;
   }
 
-  console.log(`Fetching ${type} rules from ${source.url}...`);
   try {
     const content = await fetchWithRetry(source.url);
     if (!content) return null;
 
-    const rules = await extractSectionContent(content, source.section);
-    return rules;
+    const groupedRules = {};
+    
+    for (const group of source.groups) {
+      console.log(`\nProcessing ${group.name} rules...`);
+      const rules = await extractSectionContent(content, group.section);
+      if (rules && rules.length > 0) {
+        groupedRules[group.name] = {
+          description: group.description,
+          rules: rules
+        };
+      }
+    }
+
+    return groupedRules;
   } catch (error) {
     console.error(`Error processing ${type} rules:`, error);
     return null;

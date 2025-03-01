@@ -46,7 +46,7 @@ jobs:
           body: |
             This PR updates the rules data from remote sources.
             
-            - Updates cursor rules from awesome-cursorrules
+            - Updates rules from awesome-cursorrules
             - Updates windsurf rules (when configured)
             
             This is an automated PR created by the update-rules workflow.
