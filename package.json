@@ -1,20 +1,48 @@
 {
   "name": "rules-gen",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "bin": {
-    "workspace": "bin/index.js"
+    "rules-gen": "bin/index.js"
   },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm test",
+    "preversion": "npm test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blencorp/rules-gen.git"
+  },
+  "keywords": [
+    "cli",
+    "rules",
+    "generator",
+    "cursor",
+    "windsurf"
+  ],
+  "author": "Mike Endale, Naod Yeheyes",
+  "license": "MIT",
+  "description": "An interactive CLI tool that generates cursor and windsurf rules based on user selections",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/blencorp/rules-gen/issues"
+  },
+  "homepage": "https://github.com/blencorp/rules-gen#readme",
   "dependencies": {
     "boxen": "^5.1.2",
     "chalk": "^4.1.2",
