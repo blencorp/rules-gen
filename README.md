@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/944cd04d-c17a-4092-b3ec-d2192c3299a9)
+https://github.com/user-attachments/assets/f1b800b8-5f6d-4168-a38c-51e51d609505
 
 # Rules Generator CLI
 
