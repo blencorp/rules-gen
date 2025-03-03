@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/7f9d3102-3ab7-4d3f-b4f9-2b019830bd1f)
+
+
 # Rules Generator CLI
 
 An interactive CLI tool that generates cursor and windsurf rules based on user selections. 
@@ -91,13 +94,13 @@ Special thanks to [awesome-cursorrules](https://github.com/PatrickJS/awesome-cur
 
 ### Prerequisites
 
-- Node.js 14 or higher
+- Node.js 18 or higher
 
 ### Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/rules-gen.git
+   git clone https://github.com/blencorp/rules-gen.git
    cd rules-gen
    ```
 
