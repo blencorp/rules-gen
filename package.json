@@ -13,6 +13,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "start": "node bin/index.js",
     "update-rules": "node scripts/updateRules.js",
     "test": "mocha",
     "prepublishOnly": "npm test",
