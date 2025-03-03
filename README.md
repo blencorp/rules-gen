@@ -118,8 +118,11 @@ Special thanks to [awesome-cursorrules](https://github.com/PatrickJS/awesome-cur
 
 MIT
 
+## Sponsorship
+
+This project was sponsored by [BLEN](https://www.blencorp.com), a digital services company that provides Emerging Technology (ML/AI, RPA), Digital Modernization (moving legacy systems to Cloud) and Human-Centered Web/Mobile Design and Development. For questions, please contact [opensource@blencorp.com](mailto:opensource@blencorp.com).
+
 ## Team
 
-Mike Endale ([@mikeendale](https://x.com/mikeendale))
-
-Naod Yeheyes ([@naodya](https://x.com/naodya))
+- Mike Endale ([@mikeendale](https://x.com/mikeendale))
+- Naod Yeheyes ([@naodya](https://x.com/naodya))
