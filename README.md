@@ -7,16 +7,20 @@ An interactive CLI tool that generates cursor and windsurf rules based on user s
 ## Features
 
 - Interactive prompts for selecting rule types and specific rules
+- Smart tech stack detection and rule matching
 - Support for multiple rule selection in a single operation
 - Generate for multiple IDE types simultaneously (Cursor/Windsurf)
 - Smart filename generation with URL-friendly slugs
 - Non-interactive mode for CI/CD or scripting
 - Modern, user-friendly terminal UI with validation
 - Proper error handling and user feedback
+- Intelligent file size management with graceful truncation
+- Streamlined file conflict resolution
 
 ## Installation
 
-### Using npx (without installation) - recommended - the rulelist gets updated daily
+### Using npx
+> Recommended - the rulelist gets updated daily
 
 ```bash
 npx rules-gen
@@ -35,18 +39,17 @@ npm install -g rules-gen
 Simply run the CLI without arguments to use the interactive mode:
 
 ```bash
-rules-gen
-```
-
-or
-
-```bash
 npx rules-gen
 ```
 
 The interactive mode now supports:
 - Multiple rule selection using checkboxes
 - Multiple IDE type selection (Cursor/Windsurf/both)
+- Smart tech stack detection for better rule matching
+- Intelligent file handling:
+  * Preview existing rules with rule count
+  * Options to overwrite or append rules
+  * Automatic size limit handling (100KB)
 - Smart validation to ensure valid selections
 - Clear breadcrumb navigation
 - Improved search functionality
@@ -57,17 +60,26 @@ Use command-line arguments to generate rules without prompts:
 
 ```bash
 # Generate specific cursor rules
-rules --type cursor --rules basic,hover --interactive false
+npx rules-gen --type cursor --rules basic,hover --interactive false
 
 # Generate all windsurf rules
-rules --type windsurf --interactive false
+npx rules-gen --type windsurf --interactive false
 
 # Generate both cursor and windsurf rules
-rules --type all --interactive false
+npx rules-gen --type all --interactive false
 
-# Force overwrite existing files
-rules --type cursor --rules basic,hover --interactive false --force
+# Force overwrite existing files (skips conflict prompts)
+npx rules-gen --type cursor --rules basic,hover --force
+
+# Combine multiple options
+npx rules-gen --type all --rules basic,react,node --force --interactive false
 ```
+
+Options:
+- `--type, -t`: Rule type (`cursor`, `windsurf`, or `all`)
+- `--rules, -r`: Specific rules to generate (comma-separated)
+- `--interactive, -i`: Use interactive prompts (`true`/`false`, defaults to `true`)
+- `--force, -f`: Force overwrite existing files without prompting
 
 ## How It Works
 
@@ -78,6 +90,22 @@ The CLI generates IDE-specific rule files based on your selections:
 - File names are automatically generated as URL-friendly slugs
 - Multiple rules can be generated simultaneously
 - Both IDE types can be generated in a single operation
+- Smart tech stack detection for better rule matching
+- Automatic size limit handling (100KB) with graceful truncation
+
+### File Handling
+
+The CLI includes intelligent file handling features:
+
+- Detects existing rule files and offers options to:
+  * Overwrite existing rules
+  * Append to existing rules
+  * Cancel operation
+- Shows condensed file previews for better decision making
+- Handles large rule sets gracefully:
+  * 100KB file size limit
+  * Smart truncation with informative notes
+  * Preserves existing content when near size limit
 
 ## Contributing
 
