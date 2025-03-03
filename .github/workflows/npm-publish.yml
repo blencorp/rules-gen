@@ -2,7 +2,9 @@ name: Publish to NPM
 
 on:
   release:
-    types: [published]
+    types:
+      - published
+      - created
 
 jobs:
   quality:
