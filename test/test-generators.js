@@ -26,7 +26,7 @@ async function testGenerators() {
   // Test Cursor Generator
   console.log("Testing Cursor Generator...");
   try {
-    const cursorResult = await cursorGenerator.generate(testRule, process.cwd());
+    const cursorResult = await cursorGenerator.generate(testRule, process.cwd(), true); // Add force=true
     console.log("Cursor Generator Result:", cursorResult);
   } catch (error) {
     console.error("Cursor Generator Error:", error);
@@ -35,7 +35,7 @@ async function testGenerators() {
   // Test Windsurf Generator
   console.log("\nTesting Windsurf Generator...");
   try {
-    const windsurfResult = await windsurfGenerator.generate(testRule, process.cwd());
+    const windsurfResult = await windsurfGenerator.generate(testRule, process.cwd(), true); // Add force=true
     console.log("Windsurf Generator Result:", windsurfResult);
   } catch (error) {
     console.error("Windsurf Generator Error:", error);
